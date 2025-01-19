@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Dark3">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/sportsModeMainContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+<!--        android:paddingLeft="10dp"-->
+<!--        android:paddingTop="20dp"-->
+<!--        android:paddingRight="10dp"-->
+
+        <TextView
+            android:id="@+id/sportsModeText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/Dark1"
+            android:fontFamily="@font/font_3"
+            android:padding="10dp"
+            android:text="Sports Mode"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/supportDivider"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            app:dividerColor="@color/Dark1"
+            app:layout_constraintBottom_toBottomOf="@+id/sportsModeText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/sportsModeText" />
+
+        <ImageView
+            android:id="@+id/checkButton"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/checked_icon02"
+            android:layout_marginRight="10dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/sportsModeText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/sportsModeText" />
+
+        <ImageView
+            android:id="@+id/unCheckButton"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/unchecked_icon02"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/sportsModeText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/sportsModeMainContainer" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/sportsModeText">
+
+          <androidx.constraintlayout.widget.ConstraintLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+              <com.facebook.shimmer.ShimmerFrameLayout
+                  android:id="@+id/sportsModeOptionsRecyclerViewShimmerEffectPlaceHolder"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:layout_margin="10dp"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  app:layout_constraintEnd_toEndOf="@+id/sportsModeOptionsRecyclerView"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toTopOf="parent">
+
+                  <include layout="@layout/activity_main_sports_mode_shimmer_placeholder" />
+
+              </com.facebook.shimmer.ShimmerFrameLayout>
+
+              <androidx.recyclerview.widget.RecyclerView
+                  android:id="@+id/sportsModeOptionsRecyclerView"
+                  android:layout_width="0dp"
+                  android:layout_height="wrap_content"
+                  android:layout_margin="10dp"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  app:layout_constraintEnd_toStartOf="@+id/moreButton"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toTopOf="parent" />
+
+              <androidx.constraintlayout.widget.ConstraintLayout
+                  android:id="@+id/moreButton"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_margin="10dp"
+                  android:visibility="gone"
+                  android:background="@drawable/sports_mode_containers_bg"
+                  android:clickable="true"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintTop_toTopOf="parent">
+
+                  <ImageView
+                      android:id="@+id/moreIcon"
+                      android:layout_width="40dp"
+                      android:layout_height="40dp"
+                      android:layout_marginTop="10dp"
+                      android:src="@drawable/more_icon01"
+                      android:tint="@color/white"
+                      app:layout_constraintEnd_toEndOf="parent"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toTopOf="parent" />
+
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_margin="9dp"
+                      android:fontFamily="@font/font_1"
+                      android:text="LIST VIEW"
+                      android:textColor="@color/white"
+                      android:textSize="15sp"
+                      app:layout_constraintBottom_toBottomOf="parent"
+                      app:layout_constraintEnd_toEndOf="parent"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/moreIcon" />
+
+              </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+          </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                android:id="@+id/moreButton"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:background="@drawable/sports_mode_containers_bg"-->
+<!--                android:clickable="true">-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/moreIcon"-->
+<!--                    android:layout_width="40dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:src="@drawable/more_icon01"-->
+<!--                    android:tint="@color/white"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="9dp"-->
+<!--                    android:fontFamily="@font/font_1"-->
+<!--                    android:text="LIST VIEW"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="15sp"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/moreIcon" />-->
+
+<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/aclonica</item>
+        <item>@font/font_1</item>
+        <item>@font/font_2</item>
+        <item>@font/font_3</item>
+        <item>@font/font_4</item>
+        <item>@font/font_5</item>
+    </array>
+</resources>

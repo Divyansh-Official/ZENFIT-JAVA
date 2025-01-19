@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Image Layer -->
+    <item>
+        <bitmap
+            android:src="@drawable/signin_bg"/>
+    </item>
+
+    <!-- Gradient Layer -->
+    <item>
+        <shape>
+            <gradient
+                android:startColor="#00000000"
+            android:endColor="#80000000"
+            android:angle="90" />
+            <corners android:radius="0dp" />
+        </shape>
+    </item>
+</layer-list>
