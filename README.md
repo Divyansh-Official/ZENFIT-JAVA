@@ -22,7 +22,7 @@ Follow these steps to set up the project locally:
 3. Set up a Firebase project in the Firebase Console.
 
 INSTALLATION STEPS
-1. Clone the repository: git clone https://github.com/Divyansh-Official/ZenFit.HealthAndFitness.Android.git
+1. Clone the repository: git clone https://github.com/Divyansh-Official/ZENFIT.Android.git
 2. Open the project in Android Studio
 3. Sync the Gradle files to resolve dependencies
 4. Set up Firebase: -> Download the google-services.json file from your Firebase Console
