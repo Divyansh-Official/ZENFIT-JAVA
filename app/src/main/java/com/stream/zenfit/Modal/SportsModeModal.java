@@ -1,6 +1,6 @@
-package com.stream.zenfit.Model;
+package com.stream.zenfit.Modal;
 
-public class SportsModeModel {
+public class SportsModeModal {
     private String sportsName;
     private String iconLink;
     private String imageLink;
@@ -12,7 +12,7 @@ public class SportsModeModel {
     private String ytLinkMoreCalories;
 
     // Constructor
-    public SportsModeModel(String sportsName, String iconLink, String imageLink, String ytLinkLessWeight,
+    public SportsModeModal(String sportsName, String iconLink, String imageLink, String ytLinkLessWeight,
                            String ytLinkMoreWeight, String ytLinkLessHeight, String ytLinkMoreHeight,
                            String ytLinkLessCalories, String ytLinkMoreCalories) {
         this.sportsName = sportsName;

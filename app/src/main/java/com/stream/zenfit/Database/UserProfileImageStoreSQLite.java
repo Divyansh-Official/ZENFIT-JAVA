@@ -1,4 +1,4 @@
-package com.stream.zenfit.SQLiteDatabase;
+package com.stream.zenfit.Database;
 
 import android.content.ContentValues;
 import android.content.Context;

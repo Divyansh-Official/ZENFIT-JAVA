@@ -10,7 +10,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.stream.zenfit.Adapter.SportsModeAdapter;
-import com.stream.zenfit.Model.SportsModeModel;
+import com.stream.zenfit.Modal.SportsModeModal;
 import com.stream.zenfit.databinding.ActivitySportsModeRepresentationBinding;
 
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class SportsModeRepresentationActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firebaseFirestore;
     DocumentReference documentReference;
-    List<SportsModeModel> sportsList = new ArrayList<>();
+    List<SportsModeModal> sportsList = new ArrayList<>();
     SportsModeAdapter adapter = new SportsModeAdapter(this, sportsList);
     String userID;
     String sportsName;
@@ -60,7 +60,7 @@ public class SportsModeRepresentationActivity extends AppCompatActivity {
                             String ytLinkLessCalories = document.getString("YTLinkLessCalories");
                             String ytLinkMoreCalories = document.getString("YTLinkMoreCalories");
 
-                            SportsModeModel sports = new SportsModeModel(name, iconLink, imageLink,
+                            SportsModeModal sports = new SportsModeModal(name, iconLink, imageLink,
                                     ytLinkLessWeight, ytLinkMoreWeight, ytLinkLessHeight,
                                     ytLinkMoreHeight, ytLinkLessCalories, ytLinkMoreCalories);
 

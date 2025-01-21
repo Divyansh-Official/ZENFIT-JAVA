@@ -33,7 +33,7 @@
             android:layout_height="37.5dp"
             android:layout_marginLeft="20dp"
             android:tint="@color/white"
-            android:src="@drawable/logo_icon02"
+            android:src="@drawable/logo_icon04"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

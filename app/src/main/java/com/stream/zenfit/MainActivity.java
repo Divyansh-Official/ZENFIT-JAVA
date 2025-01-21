@@ -35,7 +35,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.stream.zenfit.Adapter.SportsModeAdapter;
-import com.stream.zenfit.Model.SportsModeModel;
+import com.stream.zenfit.Modal.SportsModeModal;
 import com.stream.zenfit.databinding.ActivityMainBinding;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     Dialog dialogUpdates, dialogAdmin;
     Button closeDialogButton, loginDialogButton;
     private EditText adminUserName, adminUserPassword;
-    List<SportsModeModel> sportsList = new ArrayList<>();
+    List<SportsModeModal> sportsList = new ArrayList<>();
     SportsModeAdapter adapter = new SportsModeAdapter(this, sportsList);
     String userID;
 
@@ -218,7 +218,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         Animation scrollDownAnim = AnimationUtils.loadAnimation(this, R.anim.scroll_down_anim);
         Animation scrollLeftAnim = AnimationUtils.loadAnimation(this, R.anim.scroll_left_anim);
         Animation scrollRightAnim = AnimationUtils.loadAnimation(this, R.anim.scroll_right_anim);
-        Animation bounceAnim = AnimationUtils.loadAnimation(this, R.anim.bouncy_anim);
 
         binding.chatbot.floatingButton.startAnimation(scrollLeftAnim);
         binding.chatbot.floatingButton.setAnimation(R.raw.robot_icon03);
@@ -232,10 +231,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         binding.addMoreFeaturesButton.startAnimation(scrollLeftAnim);
 
         binding.toolbar.appLogo.startAnimation(scrollRightAnim);
-
-//        binding.headerImage.startAnimation(scrollDownAnim);
-//        binding.chatbotPopupMessageContainer.startAnimation(bounceAnim);
-//        Glide.with(this).asGif().load(R.raw.robot_icon01).into(binding.chatbot.floatingButton);
     }
 
     private void setupHeaderImageDragUpDown() {
@@ -354,7 +349,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         });
 
-        binding.chatbot.floatingButton.setOnClickListener(v -> startActivity(new Intent(this, ChatWithAnAIActivity.class)));
+        binding.chatbot.floatingButton.setOnClickListener(v -> startActivity(new Intent(this, ChatBotActivity.class)));
     }
 
     private void setupPedometerPermission() {
@@ -587,7 +582,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
                 case SensorManager.SENSOR_STATUS_ACCURACY_LOW:
                     Log.d("SensorAccuracy", "Low accuracy for step counter.");
-//                    Toast.makeText(this, "Low Accuracy Step Counter", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Low Accuracy Step Counter", Toast.LENGTH_SHORT).show();
                     break;
 
                 case SensorManager.SENSOR_STATUS_NO_CONTACT:
@@ -624,9 +619,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     protected void onStop() {
         super.onStop();
-        if (pedometerSensorManager != null) {
-            pedometerSensorManager.unregisterListener(this);
-        }
+//        if (pedometerSensorManager != null) {
+//            pedometerSensorManager.unregisterListener(this);
+//        }
+        setupPedometerPermission();
     }
 
     @Override

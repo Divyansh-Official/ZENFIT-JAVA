@@ -23,7 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.stream.zenfit.SQLiteDatabase.UserProfileImageStoreSQLite;
+import com.stream.zenfit.Database.UserProfileImageStoreSQLite;
 import com.stream.zenfit.databinding.ActivityProfileBinding;
 
 import java.util.HashMap;

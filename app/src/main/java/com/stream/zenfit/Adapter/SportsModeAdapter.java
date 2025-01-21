@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.stream.zenfit.Model.SportsModeModel;
+import com.stream.zenfit.Modal.SportsModeModal;
 import com.stream.zenfit.R;
 
 import java.util.List;
@@ -19,9 +19,9 @@ import java.util.List;
 public class SportsModeAdapter extends RecyclerView.Adapter<SportsModeAdapter.SportsViewHolder> {
 
     private Context context;
-    private List<SportsModeModel> sportsList;
+    private List<SportsModeModal> sportsList;
 
-    public SportsModeAdapter(Context context, List<SportsModeModel> sportsList) {
+    public SportsModeAdapter(Context context, List<SportsModeModal> sportsList) {
         this.context = context;
         this.sportsList = sportsList;
     }
@@ -35,7 +35,7 @@ public class SportsModeAdapter extends RecyclerView.Adapter<SportsModeAdapter.Sp
 
     @Override
     public void onBindViewHolder(@NonNull SportsViewHolder holder, int position) {
-        SportsModeModel sports = sportsList.get(position);
+        SportsModeModal sports = sportsList.get(position);
 
         holder.sportsName.setText(sports.getSportsName());
         Glide.with(context).load(sports.getImageLink()).into(holder.sportsImage);

@@ -3,7 +3,7 @@ package com.stream.zenfit;
 import android.widget.Toast;
 
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.stream.zenfit.Model.SportsModeModel;
+import com.stream.zenfit.Modal.SportsModeModal;
 
 class SportsMode extends MainActivity {
     private void fetchData() {
@@ -22,7 +22,7 @@ class SportsMode extends MainActivity {
                             String ytLinkLessCalories = document.getString("YTLinkLessCalories");
                             String ytLinkMoreCalories = document.getString("YTLinkMoreCalories");
 
-                            SportsModeModel sports = new SportsModeModel(name, iconLink, imageLink,
+                            SportsModeModal sports = new SportsModeModal(name, iconLink, imageLink,
                                     ytLinkLessWeight, ytLinkMoreWeight, ytLinkLessHeight,
                                     ytLinkMoreHeight, ytLinkLessCalories, ytLinkMoreCalories);
 

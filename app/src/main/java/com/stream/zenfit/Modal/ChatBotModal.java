@@ -1,6 +1,6 @@
-package com.stream.zenfit.Model;
+package com.stream.zenfit.Modal;
 
-public class ChatBotModel {
+public class ChatBotModal {
 
     public static String SENT_BY_USER = "user";
     public static String SENT_BY_BOT = "bot";
@@ -24,7 +24,7 @@ public class ChatBotModel {
         this.message = message;
     }
 
-    public ChatBotModel(String sender, String message) {
+    public ChatBotModal(String sender, String message) {
         this.sender = sender;
         this.message = message;
     }

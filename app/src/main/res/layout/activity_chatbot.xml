@@ -5,14 +5,15 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChatWithAnAIActivity"
-    android:background="@drawable/chat_bot_activity_bg">
+    tools:context=".ChatBotActivity"
+    android:background="@drawable/chat_bot_activity_bg_03">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout21"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:alpha="0.85"
         android:background="@color/Dark3"
-        android:alpha="0.8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,14 +23,39 @@
         android:id="@+id/welcomeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:padding="10dp"
         android:gravity="center"
-        android:fontFamily="@font/font_4"
-        android:text="Hey! you can ask anything from me regarding health"
-        android:textColor="@color/white"
+        android:fontFamily="@font/font_3"
+        android:text="Z E N  F I T    A I"
+        android:textStyle="bold"
+        android:textColor="@color/Dark0"
         app:layout_constraintBottom_toBottomOf="@+id/chatRecyclerView"
         app:layout_constraintEnd_toEndOf="@+id/chatRecyclerView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarContainer" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chatRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/chatInputAndSenderContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarContainer" />
+
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteSearchInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/chat_search_bg"
+        android:visibility="gone"
+        android:padding="15dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:fontFamily="@font/font_3"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbarContainer" />
 
@@ -43,56 +69,82 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView10"
+            android:id="@+id/chatBotTitleText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
             android:fontFamily="@font/font_3"
             android:text="Z E N   F I T"
             android:textColor="@color/white"
             android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/wallpaperCangeButton"
+            app:layout_constraintStart_toEndOf="@+id/lottieAnimationView"
             app:layout_constraintTop_toTopOf="parent" />
 
-<!--        <com.airbnb.lottie.LottieAnimationView-->
-<!--            android:id="@+id/chatLogo"-->
-<!--            android:layout_width="60dp"-->
-<!--            android:layout_height="60dp"-->
-<!--            app:lottie_loop="true"-->
-<!--            app:lottie_autoPlay="true"-->
-<!--            android:layout_marginBottom="10dp"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:layout_marginRight="20dp"-->
-<!--            app:lottie_rawRes="@drawable/robot_icon03"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
+        <ImageView
+            android:id="@+id/clearChatButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/clear_icon01"
+            app:layout_constraintBottom_toBottomOf="@+id/chatBotTitleText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/chatBotTitleText" />
+
+        <ImageView
+            android:id="@+id/searchChatButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/search_icon01"
+            app:layout_constraintBottom_toBottomOf="@+id/chatBotTitleText"
+            app:layout_constraintEnd_toStartOf="@+id/clearChatButton"
+            app:layout_constraintTop_toTopOf="@+id/chatBotTitleText" />
+
+        <ImageView
+            android:id="@+id/wallpaperCangeButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="20dp"
+            android:tint="@color/IconThemedColor4"
+            android:src="@drawable/wallpaper_icon01"
+            app:layout_constraintBottom_toBottomOf="@+id/chatBotTitleText"
+            app:layout_constraintEnd_toStartOf="@+id/searchChatButton"
+            app:layout_constraintTop_toTopOf="@+id/chatBotTitleText" />
+
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieAnimationView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/chatBotTitleText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/chatBotTitleText"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/robot_icon04" />
 
         <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/materialDivider3"
             android:layout_width="match_parent"
-            android:layout_height="2dp"
-            app:dividerColor="@color/IconThemedColor4"
+            android:layout_height="1dp"
+            app:dividerColor="@color/Dark1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/chatRecyclerView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/chatInputAndSenderContainer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarContainer" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/chatInputAndSenderContainer"
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:background="@color/Dark2"
+        android:background="@color/Dark3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -100,7 +152,7 @@
         <com.google.android.material.divider.MaterialDivider
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            app:dividerColor="@color/Dark0"
+            app:dividerColor="@color/Dark1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -127,8 +179,8 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_margin="10dp"
-            android:tint="@color/white"
-            android:src="@drawable/send_icon03"
+            android:tint="@color/IconThemedColor4"
+            android:src="@drawable/send_icon04"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

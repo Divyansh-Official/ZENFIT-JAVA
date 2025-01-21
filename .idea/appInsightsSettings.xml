@@ -8,7 +8,7 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="com.stream.youthmentalhealthinsportsplatform" />
+                  <option name="appId" value="com.stream.zenfit" />
                   <option name="mobileSdkAppId" value="1:551593437601:android:f5d8e533fd36a8abbd03e0" />
                   <option name="projectId" value="zenfit-official" />
                   <option name="projectNumber" value="551593437601" />
