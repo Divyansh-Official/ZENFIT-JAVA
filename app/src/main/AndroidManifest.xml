@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <!-- Permissions -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -17,12 +16,19 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.BODY_SENSORS" />
     <uses-permission android:name="android.permission.BODY_SENSORS_BACKGROUND" />
-    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
-
-    <!-- Features -->
-    <uses-feature android:name="android.hardware.sensor.stepcounter" android:required="true" />
-    <uses-feature android:name="android.hardware.sensor.stepdetector" android:required="true" />
-    <uses-feature android:name="android.hardware.telephony" android:required="false" />
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" /> <!-- Features -->
+    <uses-feature
+        android:name="android.hardware.sensor.stepcounter"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.sensor.stepdetector"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" /> <!-- android:name="com.google.android.youtube.API_KEY" -->
+    <meta-data
+        android:name="com.google.android.youtube.API_KEY"
+        android:value="AIzaSyCMaMw7tj9mSRNOCIMffeTqR5qyCmACMhc" />
 
     <application
         android:allowBackup="true"
@@ -34,31 +40,127 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.YouthMentalHealthInSportsPlatform"
         tools:targetApi="31">
+        <activity
+            android:name=".MoreExerciseModeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ExerciseRepresentationSplashScreenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ExerciseRepresentationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MailVerificationActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RemoveSportsVarietyActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ModifySportsVarietyActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" /> <!-- Activities -->
+        <activity
+            android:name=".SplashScreenActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
 
-        <!-- Activities -->
-        <activity android:name=".SplashScreenActivity" android:exported="true" android:screenOrientation="portrait">
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" android:exported="true" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".SignUpActivity" android:exported="true" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".ChatBotActivity" android:exported="false" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".ProfileActivity" android:exported="false" android:screenOrientation="portrait" />
-        <activity android:name=".SportsModeItemManagementActivity" android:exported="false" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".AdminActivity" android:exported="false" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".MoreSportsModeActivity" android:exported="false" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".SportsModeRepresentationActivity" android:exported="false" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".SignUpNameActivity" android:exported="false" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".SignUpPhoneActivity" android:exported="false" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".SignUpEmailActivity" android:exported="false" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".SignUpPasswordActivity" android:exported="false" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".SignUpAgeActivity" android:exported="false" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".SignInActivity" android:exported="false" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan" />
-
-        <!-- Meta-data -->
-        <meta-data android:name="preloaded_fonts" android:resource="@array/preloaded_fonts" />
+        <activity
+            android:name=".SignUpActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ChatBotActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddSportsVarietyActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".AddExerciseVarietyActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".AddYogaVarietyActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".AdminActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".MoreSportsModeActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".SportsModeRepresentationActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".SignUpNameActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".SignUpPhoneActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".SignUpEmailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".SignUpPasswordActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".SignUpAgeActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".SignInActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" /> <!-- Meta-data -->
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

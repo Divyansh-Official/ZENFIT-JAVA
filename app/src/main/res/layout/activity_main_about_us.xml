@@ -3,126 +3,143 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingTop="10dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp">
-
-    <TextView
-        android:id="@+id/aboutUsTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="About Us: "
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/aboutUsParagraph01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome to ZenFit, your trusted companion for promoting mental wellness among youth engaged in sports. We understand the unique challenges athletes face—balancing rigorous training schedules, personal aspirations, and mental well-being. At ZenFit, we aim to empower young athletes to take charge of their mental health and performance."
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        android:layout_margin="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/aboutUsTitle" />
-
-    <TextView
-        android:id="@+id/aboutUsParagraph02"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Our platform is designed with care and expertise to offer tools and resources that help athletes manage stress, build resilience, and achieve a healthier balance in their lives. Whether you’re navigating the highs of competition or the lows of recovery, ZenFit is here to support you every step of the way."
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        android:layout_margin="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/aboutUsParagraph01" />
-
-    <TextView
-        android:id="@+id/aboutUsParagraph03"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="With features tailored to athletes' needs, such as mental health tracking, mindfulness exercises, and access to expert resources, ZenFit is more than just an app—it’s your mental health coach, always by your side."
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        android:layout_margin="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/aboutUsParagraph02" />
+    android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="175dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/about_us_link_bg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/aboutUsParagraph03">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/instagramButton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="50dp"
-            android:src="@drawable/instagram_icon02"
-            android:tint="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <TextView
+            android:id="@+id/aboutUsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="About Us: "
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/linkedinButton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="50dp"
-            android:src="@drawable/linkedin_icon03"
-            android:tint="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/githubButton"
-            app:layout_constraintStart_toEndOf="@+id/instagramButton"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/githubButton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="50dp"
-            android:src="@drawable/github_icon02"
-            android:tint="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <TextView
+            android:id="@+id/aboutUsParagraph01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Welcome to ZenFit, your trusted companion for promoting mental wellness among youth engaged in sports. We understand the unique challenges athletes face—balancing rigorous training schedules, personal aspirations, and mental well-being. At ZenFit, we aim to empower young athletes to take charge of their mental health and performance."
+            android:textColor="@color/white"
+            android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/copyrightButton"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/copyright_icon"
-            android:tint="@color/white"
-            app:layout_constraintBottom_toBottomOf="@+id/textView8"
-            app:layout_constraintEnd_toStartOf="@+id/linkedinButton"
-            app:layout_constraintStart_toEndOf="@+id/instagramButton"
-            app:layout_constraintTop_toTopOf="@+id/textView8" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/aboutUsTitle" />
 
         <TextView
-            android:id="@+id/textView8"
-            android:layout_width="0dp"
+            android:id="@+id/aboutUsParagraph02"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:fontFamily="@font/font_3"
-            android:gravity="center"
-            android:text="Developed by: Divyansh Tiwari"
+            android:layout_margin="10dp"
+            android:text="Our platform is designed with care and expertise to offer tools and resources that help athletes manage stress, build resilience, and achieve a healthier balance in their lives. Whether you’re navigating the highs of competition or the lows of recovery, ZenFit is here to support you every step of the way."
             android:textColor="@color/white"
-            android:textSize="12sp"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/aboutUsParagraph01" />
+
+        <TextView
+            android:id="@+id/aboutUsParagraph03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="With features tailored to athletes' needs, such as mental health tracking, mindfulness exercises, and access to expert resources, ZenFit is more than just an app—it’s your mental health coach, always by your side."
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/aboutUsParagraph02" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/about_us_link_bg"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/copyrightButton" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/aboutUsParagraph03">
+
+            <ImageView
+                android:id="@+id/instagramButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="50dp"
+                android:src="@drawable/instagram_icon02"
+                android:tint="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/linkedinButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="50dp"
+                android:src="@drawable/linkedin_icon03"
+                android:tint="@color/white"
+                app:layout_constraintEnd_toStartOf="@+id/githubButton"
+                app:layout_constraintStart_toEndOf="@+id/instagramButton"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/githubButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="50dp"
+                android:src="@drawable/github_icon02"
+                android:tint="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/xButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/x_icon01"
+                android:tint="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/textView8"
+                app:layout_constraintEnd_toEndOf="@+id/linkedinButton"
+                app:layout_constraintStart_toStartOf="@+id/linkedinButton"
+                app:layout_constraintTop_toBottomOf="@+id/instagramButton" />
+
+            <ImageView
+                android:id="@+id/copyrightButton"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/copyright_icon"
+                android:tint="@color/white"
+                app:layout_constraintBottom_toBottomOf="@+id/textView8"
+                app:layout_constraintEnd_toStartOf="@+id/linkedinButton"
+                app:layout_constraintStart_toEndOf="@+id/instagramButton"
+                app:layout_constraintTop_toTopOf="@+id/textView8" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/font_3"
+                android:gravity="center"
+                android:text="Developed by: Divyansh Tiwari"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/copyrightButton" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

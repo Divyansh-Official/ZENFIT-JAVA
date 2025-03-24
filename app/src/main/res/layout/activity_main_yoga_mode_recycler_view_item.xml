@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        android:background="@drawable/yoga_mode_container_bg"
+        android:clipToOutline="true"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/yogaThumbnail"
+            android:layout_width="0dp"
+            android:layout_height="225dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/dummy_tadasana_img_01"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/yogaName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="40dp"
+            android:fontFamily="@font/font_3"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingTop="2.5dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="2.5dp"
+            android:text="TADASANA"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/yogaThumbnail"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="25sp"
+            android:layout_height="25sp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/up_down_arrow_icon_01"
+            android:tint="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/appCompatButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/appCompatButton" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/appCompatButton"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:alpha="0.75"
+            android:background="@color/IconThemedColor5"
+            android:fontFamily="@font/font_3"
+            android:text="LET'S GO"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@+id/yogaName"
+            app:layout_constraintTop_toBottomOf="@+id/yogaThumbnail" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/yogaProgressIndicator"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_margin="10dp"
+            app:indicatorColor="@color/IconThemedColor4"
+            android:progressTint="@color/IconThemedColor4"
+            app:dividerColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView8"
+            app:layout_constraintEnd_toStartOf="@+id/constraintLayout23"
+            app:layout_constraintStart_toEndOf="@+id/imageView8"
+            app:layout_constraintTop_toTopOf="@+id/imageView8" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/appCompatButton"
+            app:layout_constraintEnd_toStartOf="@+id/appCompatButton"
+            app:layout_constraintTop_toTopOf="@+id/appCompatButton">
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/clock_icon01"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/yogaTiming"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/font_3"
+                android:text="30 mins"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView7"
+                app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/yogaDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@color/Dark6"
+            android:fontFamily="@font/font_3"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="5dp"
+            android:text="Tadasana, or Mountain Pose, is a foundational yoga posture that promotes balance, stability, and proper alignment. It involves standing tall with feet together, engaging the core, and lengthening the spine while keeping the shoulders relaxed. This pose improves posture, enhances body awareness, and serves as a starting position for many other yoga asanas."
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatButton" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

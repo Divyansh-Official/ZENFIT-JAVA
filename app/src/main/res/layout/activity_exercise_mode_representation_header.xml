@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/exerciseModeHeaderContainer">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/inputReceiveContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include
+            android:id="@+id/backgroundOfTheContainer"
+            layout="@layout/activity_exercise_mode_representation_header_background" />
+
+        <TextView
+            android:id="@+id/textView38"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/font_3"
+            android:text="PROGRESS CHART"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/cardView"
+            app:layout_constraintStart_toStartOf="@+id/cardView" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            app:dividerColor="@color/white"
+            app:layout_constraintEnd_toEndOf="@+id/textView38"
+            app:layout_constraintStart_toStartOf="@+id/textView38"
+            app:layout_constraintTop_toBottomOf="@+id/textView38" />
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/exerciseNavigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/Dark2"
+            android:visibility="gone"
+            app:itemIconTint="@color/Dark0"
+            app:itemTextColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/exerciseIcon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialDivider9"
+            app:menu="@menu/exercise_menu" />
+
+        <TextView
+            android:id="@+id/exerciseName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BICEPS &amp; TRICEPS"
+            android:textColor="@color/white"
+            android:fontFamily="@font/font_3"
+            android:shadowDx="20"
+            android:shadowDy="20"
+            android:shadowColor="@color/Dark6"
+            android:layout_marginLeft="20dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/exerciseMenuButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/exerciseMenuButton" />
+
+        <TextView
+            android:id="@+id/exerciseDifficultyLevel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/font_3"
+            android:text="DIFFICULTY LEVEL"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="@+id/exerciseName"
+            app:layout_constraintTop_toBottomOf="@+id/exerciseName" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/materialDivider9"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            app:dividerColor="@color/white"
+            app:layout_constraintEnd_toEndOf="@+id/exerciseDifficultyLevel"
+            app:layout_constraintStart_toStartOf="@+id/exerciseDifficultyLevel"
+            app:layout_constraintTop_toBottomOf="@+id/exerciseDifficultyLevel" />
+
+        <ImageView
+            android:id="@+id/exerciseMenuButton"
+            android:layout_width="25sp"
+            android:layout_height="25sp"
+            android:src="@drawable/menu_icon02"
+            android:tint="@color/white"
+            android:layout_margin="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/exerciseIcon"
+            android:layout_width="25sp"
+            android:layout_height="25sp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/dummy_biceps_icon01"
+            android:tint="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/cardView"
+            app:layout_constraintEnd_toEndOf="@+id/cardView" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <org.eazegraph.lib.charts.PieChart
+                    android:id="@+id/exercisePieChart"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_weight="1"
+                    android:background="@color/Dark3"
+                    android:padding="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="@+id/exercisePieChart"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/exercisePieChart"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:background="@color/IconThemedColor1" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/font_3"
+                            android:gravity="center"
+                            android:text="NOT COMPLETED" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:background="@color/IconThemedColor4" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="TARGET" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:background="@color/IconThemedColor5" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="COMPLETED" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

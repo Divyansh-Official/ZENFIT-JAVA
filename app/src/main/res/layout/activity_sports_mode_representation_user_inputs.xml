@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:id="@+id/sportsModeHeaderContainer">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout13"
@@ -18,74 +19,98 @@
             android:id="@+id/backButton"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_marginLeft="20dp"
             android:src="@drawable/back_icon"
             android:tint="@color/white"
-            android:layout_marginLeft="20dp"
-            app:layout_constraintBottom_toBottomOf="@+id/textView3"
+            app:layout_constraintBottom_toBottomOf="@+id/sportsName"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView3" />
+            app:layout_constraintTop_toTopOf="@+id/sportsName" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/sportsName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:fontFamily="@font/font_3"
             android:text="SPORTS NAME"
             android:textColor="@color/white"
-            android:textSize="30sp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/sportsIcon"
+            app:layout_constraintStart_toEndOf="@+id/backButton"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/sportsIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="20dp"
+            android:tint="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/sportsName"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/inputReceiveContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout13"
-        tools:layout_editor_absoluteX="16dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout13">
 
-        <include layout="@layout/activity_sports_mode_representation_input_background" />
+        <include
+            android:id="@+id/backgroundOfTheContainer"
+            layout="@layout/activity_sports_mode_representation_input_background" />
 
         <LinearLayout
             android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/font_3"
-                android:gravity="center"
-                android:text="HEIGHT:"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/height_icon02"
+                android:layout_gravity="center_vertical"
+                android:tint="@color/white"
+                android:layout_margin="10dp"/>
 
-            <EditText
-                android:id="@+id/userHeightInput"
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@color/white"
-                android:layout_margin="10dp"
-                android:layout_weight="0.5"
                 android:fontFamily="@font/font_3"
-                android:gravity="center"
-                android:padding="5dp"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:gravity="left"
+                android:hint="E N T E R  H E I G H T"
+                android:padding="10dp"
+                android:textSize="10sp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/userHeightInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:backgroundTint="@color/white"
+                    android:layout_margin="10dp"
+                    android:fontFamily="@font/font_3"
+                    android:gravity="right"
+                    android:inputType="numberDecimal"
+                    android:maxLength="3"
+                    android:padding="10dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
 
         </LinearLayout>
 
@@ -93,38 +118,50 @@
             android:id="@+id/linearLayout4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/font_3"
-                android:gravity="center"
-                android:text="WEIGHT:"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/weight_icon02"
+                android:layout_gravity="center_vertical"
+                android:tint="@color/white"
+                android:layout_margin="10dp"/>
 
-            <EditText
-                android:id="@+id/userWeightInput"
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:layout_weight="0.5"
                 android:fontFamily="@font/font_3"
-                android:gravity="center"
-                android:padding="5dp"
-                android:background="@color/white"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:gravity="left"
+                android:hint="E N T E R  W E I G H T"
+                android:padding="10dp"
+                android:textSize="20sp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/userWeightInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:backgroundTint="@color/white"
+                    android:fontFamily="@font/font_3"
+                    android:gravity="right"
+                    android:inputType="numberDecimal"
+                    android:maxLength="3"
+                    android:padding="10dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 
@@ -132,54 +169,92 @@
             android:id="@+id/linearLayout5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+            app:layout_constraintStart_toStartOf="parent">
 
-            <TextView
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/calorie_icon02"
+                android:layout_gravity="center_vertical"
+                android:tint="@color/white"
+                android:layout_margin="10dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="1"
                 android:fontFamily="@font/font_3"
                 android:gravity="center"
-                android:text="CALORIE INTAKE:"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:hint="E N T E R  C A L O R I E"
+                android:padding="10dp"
+                android:textSize="20sp">
 
-            <EditText
-                android:id="@+id/userCalorieInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:layout_weight="0.5"
-                android:fontFamily="@font/font_3"
-                android:gravity="center"
-                android:padding="5dp"
-                android:background="@color/white"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/userCalorieInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:backgroundTint="@color/white"
+                    android:fontFamily="@font/font_3"
+                    android:gravity="right"
+                    android:inputType="numberDecimal"
+                    android:maxLength="5"
+                    android:padding="10dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
 
         </LinearLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@color/Dark3"
-            android:padding="10dp"
-            android:layout_marginBottom="30dp"
-            android:text="CALCULATE YOUR FITNESS"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--    <ImageView-->
+<!--        android:id="@+id/upDownButton"-->
+<!--        android:layout_width="30dp"-->
+<!--        android:layout_height="30dp"-->
+<!--        android:layout_marginBottom="15dp"-->
+<!--        android:src="@drawable/up_arrow_icon01"-->
+<!--        android:tint="@color/white"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/inputReceiveContainer"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/inputReceiveContainer" />-->
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/calculateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="10dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/sports_mode_representation_calculate"
+        android:clipToOutline="true"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="CALCULATE YOUR FITNESS"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputReceiveContainer" />
+
+<!--    <com.google.android.material.divider.MaterialDivider-->
+<!--        android:id="@+id/materialDivider5"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="2dp"-->
+<!--        app:dividerColor="@color/white"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/upDownButton" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

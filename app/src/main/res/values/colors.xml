@@ -5,6 +5,8 @@
 
     <color name="Dark0">#A5A4A4</color>
     <color name="Dark1">#474747</color>
+    <color name="Dark5">#585858</color>
+    <color name="Dark6">#171717</color>
     <color name="Dark2">#292929</color>
     <color name="Dark3">#202020</color>
     <color name="Dark4">#010000</color>
@@ -15,4 +17,7 @@
     <color name="IconThemedColor4">#90CAF9</color>
     <color name="IconThemedColor5">#98E898</color>
     <color name="IconThemedColor6">#36c5FE</color>
+    <color name="IconThemedColor7">#01658A</color>
+    <color name="IconThemedColor8">#E97FC6</color>
+    <color name="IconThemedColor9">#E9CF7F</color>
 </resources>

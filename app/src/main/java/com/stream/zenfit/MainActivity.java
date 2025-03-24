@@ -3,6 +3,7 @@ package com.stream.zenfit;
 import android.app.Dialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,6 +15,7 @@ import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.util.Log;
@@ -28,16 +30,32 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.stream.zenfit.Adapter.ExerciseModeAdapter;
+import com.stream.zenfit.Adapter.MainHeaderImageAdapter;
 import com.stream.zenfit.Adapter.SportsModeAdapter;
+import com.stream.zenfit.MainActivityClasses.MainExerciseMode;
+import com.stream.zenfit.MainActivityClasses.MainSportsMode;
+import com.stream.zenfit.Modal.ExerciseModeModal;
 import com.stream.zenfit.Modal.SportsModeModal;
 import com.stream.zenfit.databinding.ActivityMainBinding;
+import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,30 +66,45 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private SensorManager pedometerSensorManager;
     private Sensor stepCounterSensor;
     FirebaseAuth firebaseAuth;
+    private ViewPager viewPager;
+    private DotsIndicator dotsIndicator;
+    private int currentPosition = 0;
+    EditText userFeedback;
+    RecyclerView sportsRecyclerView;
+    private Handler handler;
+    private Runnable autoScrollRunnable;
     FirebaseFirestore firebaseFirestore;
+    ArrayList<Integer> headerImages = new ArrayList<>();
     ShimmerFrameLayout shimmerFrameLayout;
     private boolean stepCounterSensorRunning = false;
     int stepCount = 0;
     private static final String CHANNEL_ID = "PersistentNotificationChannel";
     int stepCountTarget;
+    MainHeaderImageAdapter mainHeaderImageAdapter = new MainHeaderImageAdapter(this, headerImages);
     int baseStepCount = 0;
-    float distanceCovered = 0.0f;
     FirebaseUser firebaseUser;
+    float distanceCovered = 0.0f;
     private static final int PERMISSION_REQUEST_CODE = 100;
-    Dialog dialogUpdates, dialogAdmin;
+    Dialog dialogUpdates, dialogAdmin, dialogFeedback;
     Button closeDialogButton, loginDialogButton;
+    AppCompatButton submitDialogButton;
     private EditText adminUserName, adminUserPassword;
-    List<SportsModeModal> sportsList = new ArrayList<>();
-    SportsModeAdapter adapter = new SportsModeAdapter(this, sportsList);
-    String userID;
+    String userID, userEmail;
+    SportsModeAdapter sportsModeAdapter;
+    ExerciseModeAdapter exerciseModeAdapter;
+    private List<SportsModeModal> sportsList = new ArrayList<>();
+    MainSportsMode mainSportsMode;
+    MainExerciseMode mainExerciseMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
 
         userID = firebaseAuth.getCurrentUser().getUid();
+        userEmail = firebaseAuth.getCurrentUser().getEmail();
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -88,17 +121,43 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             setupAnimationsOnStart();
             setupHeaderImageDragUpDown();
             setupPedometerVisibilityButton();
-            setupNavigationDrawer();
+            setupNavigationDrawer(userEmail);
             setupButtons();
             setupPedometerPermission();
+            setupHeaderImageNameSetup();
+
+            mainSportsMode = new MainSportsMode(this, binding);
+            mainSportsMode.setupSportsRequirements();
+
+            mainExerciseMode = new MainExerciseMode(this, binding);
+            mainExerciseMode.setupExerciseRequirements();
+        }
+    }
+
+    private void setupHeaderImageNameSetup() {
+        if (firebaseUser != null) {
+            String userEmail = firebaseUser.getEmail();
+            if (userEmail != null) {
+                DocumentReference documentReference = firebaseFirestore.collection("Users").document(userEmail);
+                documentReference.get()
+                        .addOnSuccessListener(documentSnapshot -> {
+                            if (documentSnapshot.exists()) {
+                                String userName = documentSnapshot.getString("Name");
+
+                                binding.headerImage.headerWelcomeUserText.setText("WELCOME " + userName.toUpperCase() + " !");
+
+                            } else {
+                                Toast.makeText(this, "User Data Not Found", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .addOnFailureListener(e -> Toast.makeText(this, "Failed To Retrieve User Data", Toast.LENGTH_SHORT).show());
+            }
         }
     }
 
     private void setupToolBarAppNameFunctionality() {
         binding.toolbar.appName.setOnClickListener(v -> {
-//            Intent serviceIntent = new Intent(this, ForegroundServices.class);
-//            stopService(serviceIntent);
-//            Toast.makeText(this, "Foreground Notification Dismissed", Toast.LENGTH_SHORT).show();
+
         });
     }
 
@@ -121,7 +180,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
     private void setupShimmerEffectsForDifferentModes() {
-        binding.sportsMode.sportsModeOptionsRecyclerView.setVisibility(View.INVISIBLE);
+        binding.sportsMode.sportsModeOptions.setVisibility(View.INVISIBLE);
         shimmerFrameLayout = binding.sportsMode.sportsModeOptionsRecyclerViewShimmerEffectPlaceHolder;
         shimmerFrameLayout.showShimmer(true);
         shimmerFrameLayout.startShimmer();
@@ -196,6 +255,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         Uri instaURI = Uri.parse("https://www.instagram.com/codewithdivyansh/profilecard/");
         Uri linkedinURI = Uri.parse("https://www.linkedin.com/in/divyansh-tiwari-100299288/");
         Uri githubURI = Uri.parse("https://github.com/Divyansh-Official/");
+        Uri xURI = Uri.parse("https://x.com/");
 
         binding.aboutUs.instagramButton.setOnClickListener(v -> {
             Intent instaIntent = new Intent(Intent.ACTION_VIEW, instaURI);
@@ -211,6 +271,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             Intent githubIntent = new Intent(Intent.ACTION_VIEW, githubURI);
             startActivity(githubIntent);
         });
+
+        binding.aboutUs.xButton.setOnClickListener(v -> {
+            Intent githubIntent = new Intent(Intent.ACTION_VIEW, xURI);
+            startActivity(githubIntent);
+        });
     }
 
     private void setupAnimationsOnStart() {
@@ -224,9 +289,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         binding.chatbot.floatingButton.playAnimation();
 
         binding.toolbar.appName.startAnimation(scrollDownAnim);
-        binding.headerImage.headerImage.startAnimation(scrollDownAnim);
+        binding.headerImage.headerMenuContentViewPager.startAnimation(scrollDownAnim);
 
         binding.toolbar.menuButton.startAnimation(scrollLeftAnim);
+        binding.toolbar.profileButton.startAnimation(scrollLeftAnim);
         binding.sportsMode.moreButton.startAnimation(scrollLeftAnim);
         binding.addMoreFeaturesButton.startAnimation(scrollLeftAnim);
 
@@ -234,8 +300,43 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
     private void setupHeaderImageDragUpDown() {
+        // Initialize your image resources
+        headerImages.add(R.drawable.main_header_img_01);
+        headerImages.add(R.drawable.main_header_img_02);
+        headerImages.add(R.drawable.main_header_img_03);
+        headerImages.add(R.drawable.main_header_img_04);
+        headerImages.add(R.drawable.main_header_img_05);
 
+        // Set up the ViewPager2
+        ViewPager viewPager = binding.headerImage.headerMenuContentViewPager;
+
+        // Ensure the adapter is properly initialized
+        MainHeaderImageAdapter mainHeaderImageAdapter = new MainHeaderImageAdapter(this, headerImages);
+        viewPager.setAdapter(mainHeaderImageAdapter);
+
+        // Connect the DotsIndicator
+        binding.headerImage.headerMenuContentDotsIndicator.setViewPager(viewPager);
+
+        // Start the auto-scroll
+        setupStartAutoScroll(viewPager);
     }
+
+    private void setupStartAutoScroll(ViewPager viewPager) {
+        handler = new Handler();
+        autoScrollRunnable = new Runnable() {
+            @Override
+            public void run() {
+                if (viewPager.getAdapter() != null) {
+                    currentPosition = (currentPosition + 1) % viewPager.getAdapter().getCount();
+                    viewPager.setCurrentItem(currentPosition, true);
+                    handler.postDelayed(this, 6000);
+                }
+            }
+        };
+        handler.postDelayed(autoScrollRunnable, 6000);
+    }
+
+
 
     private void setupPedometerVisibilityButton() {
         Animation scrollLeftAnim = AnimationUtils.loadAnimation(this, R.anim.scroll_left_pedometer_slider);
@@ -269,7 +370,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         });
     }
 
-    private void setupNavigationDrawer() {
+    private void setupNavigationDrawer(String userEmail) {
         dialogAdmin = new Dialog(MainActivity.this);
         dialogAdmin.setContentView(R.layout.activity_main_admin_details);
         dialogAdmin.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -290,14 +391,31 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             }
         });
 
+        dialogFeedback = new Dialog(this);
+        dialogFeedback.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialogFeedback.setContentView(R.layout.activity_main_feedback_bottom_navigation);
+
         binding.navigationDrawer.setNavigationItemSelectedListener(item -> {
-            if (item.getItemId() == R.id.profile) {
-                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+            if (item.getItemId() == R.id.feedback) {
+
+                // Set the dialog's window properties
+                if (dialogFeedback.getWindow() != null) {
+                    dialogFeedback.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    dialogFeedback.getWindow().setBackgroundDrawable(getDrawable(R.drawable.dialog_box_bg));
+                    dialogFeedback.getWindow().setGravity(Gravity.BOTTOM);
+
+                    // Apply animation using a style defined in styles.xml
+                    dialogFeedback.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+                }
+
+                dialogFeedback.setCancelable(true);
+                dialogFeedback.show();
+            } else if (item.getItemId() == R.id.admin) {
+                dialogAdmin.show();
             } else if (item.getItemId() == R.id.logout) {
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(MainActivity.this, SignUpNameActivity.class));
-            } else if (item.getItemId() == R.id.admin) {
-                dialogAdmin.show();
+                finish();
             }
             return true;
         });
@@ -310,8 +428,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             String userNameOfAdmin = adminUserName.getText().toString().trim();
             String userPasswordOfAdmin = adminUserPassword.getText().toString().trim();
 
-            if (userNameOfAdmin.equals("Divyansh13579") &&
-                    userPasswordOfAdmin.equals("ZenFit@2025")) {
+            if (userNameOfAdmin.equals("") &&
+                    userPasswordOfAdmin.equals("")) {
                 handleAdminLogin();
             }
             else {
@@ -323,6 +441,41 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         closeDialogButton = dialogAdmin.findViewById(R.id.adminCloseButton);
         closeDialogButton.setOnClickListener(v -> {
             dialogAdmin.dismiss();
+        });
+
+        submitDialogButton = dialogFeedback.findViewById(R.id.userFeedbackSubmitButton);
+        userFeedback = dialogFeedback.findViewById(R.id.userFeedbackInput);
+        submitDialogButton.setOnClickListener(v -> {
+            String feedback = userFeedback.getText().toString().trim();
+
+            if (feedback.isEmpty()) {
+                userFeedback.setError("Please Enter Your Feedback");
+            } else {
+                // Initialize Firestore
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+                // Create a HashMap to store feedback
+                Map<String, Object> feedbackData = new HashMap<>();
+                feedbackData.put("Feedback", feedback);
+                feedbackData.put("FeedbackTimeStamp", FieldValue.serverTimestamp()); // Save the time of submission
+
+                // Define the desired format
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                // Get the current date and time
+                Date now = new Date();
+
+                db.collection("Feedbacks")
+                        .document(userEmail)
+                        .collection("Submit Status -> ").document(sdf.format(now))
+                        .set(feedbackData) // Add the feedback data
+                        .addOnSuccessListener(docRef -> {
+                            Toast.makeText(MainActivity.this, "Feedback Submitted", Toast.LENGTH_SHORT).show();
+                            dialogFeedback.dismiss();
+                        })
+                        .addOnFailureListener(e -> {
+                            Toast.makeText(MainActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        });
+            }
         });
     }
 
@@ -350,49 +503,18 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         });
 
         binding.chatbot.floatingButton.setOnClickListener(v -> startActivity(new Intent(this, ChatBotActivity.class)));
+        binding.toolbar.profileButton.setOnClickListener(v -> startActivity(new Intent(this, ProfileActivity.class)));
+        binding.sportsMode.moreButton.setOnClickListener(v -> startActivity(new Intent(this, MoreSportsModeActivity.class)));
+        binding.toolbar.refreshButton.setOnClickListener(v -> {
+//            recreate();
+//            Intent intent = getIntent();
+//            finish();
+//            startActivity(intent);
+        });
     }
 
     private void setupPedometerPermission() {
-//        if (ContextCompat.checkSelfPermission(this, Manifest.permission.BODY_SENSORS) != PackageManager.PERMISSION_GRANTED ||
-//                ContextCompat.checkSelfPermission(this, Manifest.permission.ACTIVITY_RECOGNITION) != PackageManager.PERMISSION_GRANTED) {
-//
-//            ActivityCompat.requestPermissions(this,
-//                    new String[]{Manifest.permission.BODY_SENSORS, Manifest.permission.ACTIVITY_RECOGNITION},
-//                    PERMISSION_REQUEST_CODE);
-//        } else {
-
-//        SharedPreferences sharedPreferencesDefaultStepsSave = getSharedPreferences("PedometerDataStepsSave", MODE_PRIVATE);
-//        SharedPreferences.Editor stepCountEditor = sharedPreferencesDefaultStepsSave.edit();
-//        stepCountEditor.putInt("steps", 0);
-//        stepCountEditor.putFloat("distance", 0.0f);
-//        stepCountEditor.putInt("target", stepCountTarget);
-//        stepCountEditor.apply();
-
-//            binding.pedometer.stopStartPedometerButton.setOnClickListener(v -> {
-//                if (isPaused) {
-//                    isPaused = false;
-//                    binding.pedometer.stopStartPedometerButton.setImageResource(R.drawable.play_icon02);
-//                } else {
-//
-//                        SharedPreferences sharedPreferencesDefaultStepsLoad = getSharedPreferences("PedometerDataStepsLoad", MODE_PRIVATE);
-//                        int savedStepCount = sharedPreferencesDefaultStepsLoad.getInt("steps", 0); // Default: 0 steps
-//                        float savedDistance = sharedPreferencesDefaultStepsLoad.getFloat("distance", 0.0f); // Default: 0.0 Km
-//                        int savedTarget = sharedPreferencesDefaultStepsLoad.getInt("target", 10000); // Default: 10,000 steps
-//
-//                        // Update UI elements
-//                        binding.pedometer.numberOfSteps.setText(String.valueOf(savedStepCount));
-//                        binding.pedometer.coveredDistance.setText(String.format("%.2f Km", savedDistance));
-//                        binding.pedometer.pedometerProgressBar.setProgress(savedStepCount);
-//                        binding.pedometer.stepTarget.setText(String.valueOf(savedTarget));
-//                        binding.pedometer.stepTarget.setTextColor(ContextCompat.getColor(this, R.color.IconThemedColor4)); // Default color
-//                    isPaused = true;
-//                    binding.pedometer.stopStartPedometerButton.setImageResource(R.drawable.pause_icon02);
-//                }
-//            });
-
         setupStartPedometer();
-
-//        }
     }
 
     private void setupStartPedometer() {
@@ -469,10 +591,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 pedometerData.put("Steps", stepCount);
                 pedometerData.put("Distance", distanceCovered);
 
-                firebaseFirestore.collection("Users").document(userID)
-                        .collection("PedometerDailyTrack").document(String.valueOf(currentTimestamp))
-                        .set(pedometerData);
-
                 // Update SharedPreferences with reset values
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putInt("steps", stepCount);
@@ -525,16 +643,30 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private void setupPedometerForegroundNotification(int stepCount, float distanceCovered) {
         setupCreateNotificationChannel();
 
+        // Intent to open the main activity when notification is clicked
+        Intent notificationIntent = new Intent(this, MainActivity.class);
+        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+        // Ensure compatibility with Android 12+ using FLAG_IMMUTABLE
+        PendingIntent pendingIntent = PendingIntent.getActivity(
+                this,
+                0,
+                notificationIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
+        );
+
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "pedometer_updated")
-                .setSmallIcon(R.drawable.logo_icon02)
-                .setColor(ContextCompat.getColor(this, R.color.white)) // Icon for the notification
+                .setSmallIcon(R.drawable.logo_icon03)
+                .setColor(ContextCompat.getColor(this, R.color.IconThemedColor4)) // Icon for the notification
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.pedometer_icon02)) // Large icon (optional)
                 .setContentTitle("PEDOMETER") // Title
+                .setTicker("PEDOMETER") // Status bar message
                 .setContentText("Steps Count - " + stepCount + "\nDistance Covered - " + distanceCovered + " Km") // Content Text
                 .setPriority(NotificationCompat.PRIORITY_HIGH) // High priority to make it noticeable
                 .setOngoing(true) // Makes the notification persistent (cannot be dismissed by sliding)
                 .setAutoCancel(false) // Ensures the notification doesn't cancel when clicked
-                .setOnlyAlertOnce(true); // Prevents sound from repeating when the notification is updated
+                .setOnlyAlertOnce(true) // Prevents sound from repeating when the notification is updated
+                .setContentIntent(pendingIntent); // Set the pending intent for notification click
 
         // Get the NotificationManager system service
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -630,16 +762,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         super.onDestroy();
         setupPedometerPermission();
         setupCreateNotificationChannel();
-    }
-}
 
-
-
-
-
-class SportsModeFunctionality extends MainActivity{
-    private void sportsMode() {
-
+        if (handler != null && autoScrollRunnable != null) {
+            handler.removeCallbacks(autoScrollRunnable);
+        }
     }
 
 }

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:alpha="0.6">
+    android:alpha="0.5">
 
 <!--    <androidx.cardview.widget.CardView-->
 <!--        android:layout_width="match_parent"-->
@@ -18,41 +18,51 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="375dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.divider.MaterialDivider
-            android:id="@+id/supportDivider"
-            android:layout_width="1dp"
-            android:layout_height="1dp"
-            app:dividerColor="@color/Dark2"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <com.google.android.material.divider.MaterialDivider-->
+<!--            android:id="@+id/supportDivider"-->
+<!--            android:layout_width="1dp"-->
+<!--            android:layout_height="1dp"-->
+<!--            app:dividerColor="@color/Dark2"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintRight_toRightOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:background="@drawable/sports_mode_representation_input_container_down_bg"
-            app:layout_constraintBottom_toTopOf="@+id/constraintLayout12"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout12"
+        <ImageView
+            android:id="@+id/backgroundImage"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="60dp"
-            android:background="@drawable/sports_mode_representation_input_container_up_bg"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/supportDivider" />
+            android:layout_height="match_parent"
+            android:background="@drawable/sports_mode_representation_input_container_down_bg"
+            android:src="@drawable/cricket_img_01"
+            android:clipToOutline="true"
+            android:scaleType="centerCrop"/>
+
+
+        <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--            android:id="@+id/constraintLayout12"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_marginTop="60dp"-->
+<!--            android:background="@drawable/sports_mode_representation_input_container_up_bg"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/supportDivider" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

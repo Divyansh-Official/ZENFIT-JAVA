@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ScrollView
+        android:id="@+id/equipmentScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardCornerRadius="20dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:alpha="0.5"
+                        android:background="@color/Dark6"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/exerciseEquipmentHeader"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/font_3"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            android:textSize="15sp"
+                            android:layout_margin="10dp"
+                            android:layout_gravity="left"
+                            android:text="E Q U I P M E N T   D E T A I L S  -"/>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            app:cardCornerRadius="10dp"
+                            android:backgroundTint="@color/IconThemedColor1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="30sp"
+                                    android:layout_height="30sp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_margin="10dp"
+                                    android:src="@drawable/gym_equipment_icon02" />
+
+                                <ImageView
+                                    android:layout_width="30sp"
+                                    android:layout_height="30sp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_margin="10dp"
+                                    android:src="@drawable/gym_equipment_icon03" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/font_3"
+                                    android:gravity="left"
+                                    android:textColorHint="@color/black"
+                                    android:hint=" E Q U I P M E N T  N A M E "
+                                    android:padding="10dp"
+                                    android:textSize="15sp">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/exerciseEquipmentNameInput"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:fontFamily="@font/font_3"
+                                        android:gravity="left"
+                                        android:padding="10dp"
+                                        android:textColor="@color/Dark4"
+                                        android:textSize="15sp" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:backgroundTint="@color/IconThemedColor4"
+                            app:cardCornerRadius="10dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="30sp"
+                                    android:layout_height="30sp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_margin="10dp"
+                                    android:src="@drawable/gym_equipment_icon04" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/font_3"
+                                    android:gravity="left"
+                                    android:textColorHint="@color/black"
+                                    android:hint=" E Q U I P M E N T  I C O N - L I N K "
+                                    android:padding="10dp"
+                                    android:textSize="15sp">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/exerciseEquipmentIconLinkInput"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:fontFamily="@font/font_3"
+                                        android:gravity="left"
+                                        android:padding="10dp"
+                                        android:textColor="@color/Dark4"
+                                        android:textSize="15sp" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:backgroundTint="@color/IconThemedColor5"
+                            app:cardCornerRadius="10dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="30sp"
+                                    android:layout_height="30sp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_margin="10dp"
+                                    android:src="@drawable/image_icon01" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/font_3"
+                                    android:gravity="left"
+                                    android:textColorHint="@color/black"
+                                    android:hint=" E Q U I P M E N T  I M A G E 01 - L I N K "
+                                    android:padding="10dp"
+                                    android:textSize="15sp">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/exerciseEquipmentImageLink01Input"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:fontFamily="@font/font_3"
+                                        android:gravity="left"
+                                        android:padding="10dp"
+                                        android:textColor="@color/Dark4"
+                                        android:textSize="15sp" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:backgroundTint="@color/IconThemedColor5"
+                            app:cardCornerRadius="10dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="30sp"
+                                    android:layout_height="30sp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_margin="10dp"
+                                    android:src="@drawable/image_icon01" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/font_3"
+                                    android:gravity="left"
+                                    android:textColorHint="@color/black"
+                                    android:hint=" E Q U I P M E N T  I M A G E 02 - L I N K "
+                                    android:padding="10dp"
+                                    android:textSize="15sp">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/exerciseEquipmentImageLink02Input"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:fontFamily="@font/font_3"
+                                        android:gravity="left"
+                                        android:padding="10dp"
+                                        android:textColor="@color/Dark4"
+                                        android:textSize="15sp" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:backgroundTint="@color/IconThemedColor6"
+                            app:cardCornerRadius="10dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="30sp"
+                                    android:layout_height="30sp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_margin="10dp"
+                                    android:src="@drawable/video_icon01" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/font_3"
+                                    android:gravity="left"
+                                    android:textColorHint="@color/black"
+                                    android:hint=" E Q U I P M E N T  V I D E O  01 - L I N K "
+                                    android:padding="10dp"
+                                    android:textSize="15sp">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/exerciseEquipmentTutorialVideoLink01Input"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:fontFamily="@font/font_3"
+                                        android:gravity="left"
+                                        android:padding="10dp"
+                                        android:textColor="@color/Dark4"
+                                        android:textSize="15sp" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:backgroundTint="@color/IconThemedColor6"
+                            app:cardCornerRadius="10dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="30sp"
+                                    android:layout_height="30sp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_margin="10dp"
+                                    android:src="@drawable/video_icon01" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/font_3"
+                                    android:gravity="left"
+                                    android:textColorHint="@color/black"
+                                    android:hint=" E Q U I P M E N T  V I D E O  02 - L I N K "
+                                    android:padding="10dp"
+                                    android:textSize="15sp">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/exerciseEquipmentTutorialVideoLink02Input"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:fontFamily="@font/font_3"
+                                        android:gravity="left"
+                                        android:padding="10dp"
+                                        android:textColor="@color/Dark4"
+                                        android:textSize="15sp" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:backgroundTint="@color/IconThemedColor8"
+                            app:cardCornerRadius="10dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="30sp"
+                                    android:layout_height="30sp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_margin="10dp"
+                                    android:src="@drawable/sets_icon01" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/font_3"
+                                    android:gravity="left"
+                                    android:textColorHint="@color/black"
+                                    android:hint=" E Q U I P M E N T  N 0.  0 F  S E T S "
+                                    android:padding="10dp"
+                                    android:textSize="15sp">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/exerciseEquipmentSetsInput"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:fontFamily="@font/font_3"
+                                        android:gravity="left"
+                                        android:padding="10dp"
+                                        android:textColor="@color/Dark4"
+                                        android:textSize="15sp" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:backgroundTint="@color/IconThemedColor8"
+                            app:cardCornerRadius="10dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="30sp"
+                                    android:layout_height="30sp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_margin="10dp"
+                                    android:src="@drawable/reps_icon01" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/font_3"
+                                    android:gravity="left"
+                                    android:textColorHint="@color/black"
+                                    android:hint=" E Q U I P M E N T  N 0.  0 F  R E P S "
+                                    android:padding="10dp"
+                                    android:textSize="15sp">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/exerciseEquipmentRepsInput"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:fontFamily="@font/font_3"
+                                        android:gravity="left"
+                                        android:padding="10dp"
+                                        android:textColor="@color/Dark4"
+                                        android:textSize="15sp" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:backgroundTint="@color/IconThemedColor9"
+                            app:cardCornerRadius="10dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="30sp"
+                                    android:layout_height="30sp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_margin="10dp"
+                                    android:src="@drawable/description_icon01" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/font_3"
+                                    android:gravity="left"
+                                    android:textColorHint="@color/black"
+                                    android:hint=" E Q U I P M E N T  D E S C R I P T I O N "
+                                    android:padding="10dp"
+                                    android:textSize="15sp">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/exerciseEquipmentDescriptionInput"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:fontFamily="@font/font_3"
+                                        android:gravity="left"
+                                        android:padding="10dp"
+                                        android:textColor="@color/Dark4"
+                                        android:textSize="15sp" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/saveEquipmentButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:textColor="@color/white"
+                            android:background="@drawable/exercise_mode_equipment_save_button_bg"
+                            android:layout_marginRight="10dp"
+                            android:layout_gravity="center"
+                            android:text="S A V E   E Q U I P M E N T   D E T A I L S" />
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

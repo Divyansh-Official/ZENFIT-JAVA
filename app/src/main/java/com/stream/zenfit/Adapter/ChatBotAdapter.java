@@ -3,6 +3,9 @@ package com.stream.zenfit.Adapter;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.os.Build;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,10 +46,12 @@ public class ChatBotAdapter extends RecyclerView.Adapter<ChatBotAdapter.ChatBotV
             holder.botChatContainer.setVisibility(View.GONE);
             holder.userChatContainer.setVisibility(View.VISIBLE);
             holder.userChatText.setText(chat.getMessage());
+//            holder.userQueryTime.setText(chat.getTimeStamp()); // Set timestamp for user message
         } else {
             holder.userChatContainer.setVisibility(View.GONE);
             holder.botChatContainer.setVisibility(View.VISIBLE);
             holder.botChatText.setText(chat.getMessage());
+//            holder.botReplyTime.setText(chat.getTimeStamp()); // Set timestamp for bot message
         }
     }
 
@@ -66,14 +71,27 @@ public class ChatBotAdapter extends RecyclerView.Adapter<ChatBotAdapter.ChatBotV
             userChatContainer = itemView.findViewById(R.id.userChatContainer);
             botChatText = itemView.findViewById(R.id.botChatText);
             userChatText = itemView.findViewById(R.id.userChatText);
-            botReplyTime = itemView.findViewById(R.id.botReplyTime);
-            userQueryTime = itemView.findViewById(R.id.userQueryTime);
+//            botReplyTime = itemView.findViewById(R.id.botReplyTime);
+//            userQueryTime = itemView.findViewById(R.id.userQueryTime);
 
             // Set long click listeners for copying text
             botChatText.setOnLongClickListener(view -> {
+                // Copy text to clipboard
                 copyTextToClipboard(botChatText.getText().toString());
+
+                // Vibrate for 100 milliseconds
+                Vibrator vibrator = (Vibrator) view.getContext().getSystemService(Context.VIBRATOR_SERVICE);
+                if (vibrator != null && vibrator.hasVibrator()) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
+                    } else {
+                        vibrator.vibrate(200);
+                    }
+                }
+
                 return true;
             });
+
 
             userChatText.setOnLongClickListener(view -> {
                 copyTextToClipboard(userChatText.getText().toString());

@@ -97,7 +97,7 @@ public class SignUpPasswordActivity extends AppCompatActivity {
                                             .addOnSuccessListener(unused1 -> {
                                                 Log.d("User Profile Update", "OnSuccess : Profile Successfully Created For " + name);
                                                 Toast.makeText(SignUpPasswordActivity.this, "Profile Successfully Created For " + name, Toast.LENGTH_SHORT).show();
-                                                startActivity(new Intent(this, MainActivity.class));
+                                                startActivity(new Intent(this, MailVerificationActivity.class));
                                             })
                                             .addOnFailureListener(e -> {
                                                 Log.d("User Profile Update", "OnFailure : Profile Not Created");

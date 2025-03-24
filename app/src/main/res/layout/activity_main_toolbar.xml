@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbarConstraintLayout"
         android:layout_width="match_parent"
@@ -20,17 +21,17 @@
             android:fontFamily="@font/font_1"
             android:text="Z E N   F I T"
             android:textColor="@color/white"
-            android:textSize="25sp"
+            android:textSize="22.5sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/refreshButton"
+            app:layout_constraintStart_toEndOf="@+id/appLogo"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/appLogo"
-            android:layout_width="37.5dp"
-            android:layout_height="37.5dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_marginLeft="20dp"
             android:tint="@color/white"
             android:src="@drawable/logo_icon04"
@@ -40,8 +41,8 @@
 
         <ImageView
             android:id="@+id/menuButton"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="22.5dp"
+            android:layout_height="22.5dp"
             android:layout_marginRight="20dp"
             android:src="@drawable/menu_icon02"
             android:tint="@color/white"
@@ -49,7 +50,30 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/appName" />
 
-<!--        <com.google.android.material.divider.MaterialDivider-->
+        <ImageView
+            android:id="@+id/profileButton"
+            android:layout_width="22.5dp"
+            android:layout_height="22.5dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/user_icon02"
+            android:tint="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/appName"
+            app:layout_constraintEnd_toStartOf="@+id/menuButton"
+            app:layout_constraintTop_toTopOf="@+id/appName" />
+
+        <ImageView
+            android:id="@+id/refreshButton"
+            android:layout_width="22.5dp"
+            android:layout_height="22.5dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/refresh_icon01"
+            android:tint="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/appName"
+            app:layout_constraintEnd_toStartOf="@+id/profileButton"
+            app:layout_constraintTop_toTopOf="@+id/appName" />
+
+
+        <!--        <com.google.android.material.divider.MaterialDivider-->
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="2dp"-->
 <!--            app:dividerColor="@color/IconThemedColor4"-->
@@ -58,5 +82,6 @@
 <!--            app:layout_constraintStart_toStartOf="parent" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

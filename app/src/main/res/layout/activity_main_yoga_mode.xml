@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/yogaModeMainContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+<!--        android:paddingLeft="10dp"-->
+<!--        android:paddingTop="20dp"-->
+<!--        android:paddingRight="10dp"-->
+
+        <TextView
+            android:id="@+id/yogaModeText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/Dark1"
+            android:fontFamily="@font/font_3"
+            android:padding="10dp"
+            android:text="YOGA MASTERY"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/checkButton"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:tint="@color/white"
+            android:src="@drawable/checked_icon03"
+            android:layout_marginRight="10dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/exerciseModeText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/exerciseModeText" />
+
+        <ImageView
+            android:id="@+id/unCheckButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:tint="@color/white"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/unchecked_icon03"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/yogaModeText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/yogaModeMainContainer" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/yogaModeText">
+
+          <androidx.constraintlayout.widget.ConstraintLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+              <com.facebook.shimmer.ShimmerFrameLayout
+                  android:id="@+id/yogaModeOptionsRecyclerViewShimmerEffectPlaceHolder"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:layout_marginTop="5dp"
+                  android:layout_marginBottom="5dp"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toTopOf="parent">
+
+                  <include layout="@layout/activity_main_yoga_mode_shimmer_placeholder" />
+
+              </com.facebook.shimmer.ShimmerFrameLayout>
+
+              <androidx.constraintlayout.widget.ConstraintLayout
+                  android:id="@+id/yogaModeOptions"
+                  android:layout_width="match_parent"
+                  android:layout_height="0dp"
+                  app:layout_constraintBottom_toTopOf="@+id/moreButton"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toTopOf="parent">
+
+                  <androidx.recyclerview.widget.RecyclerView
+                      android:id="@+id/yogaModeOptionsRecyclerView"
+                      android:layout_width="match_parent"
+                      android:layout_height="0dp"
+                      android:layout_marginLeft="10dp"
+                      android:layout_marginTop="10dp"
+                      android:layout_marginRight="10dp"
+                      android:layout_marginBottom="15dp"
+                      android:orientation="horizontal"
+                      app:layout_constraintBottom_toTopOf="@+id/moreButton"
+                      app:layout_constraintEnd_toEndOf="parent"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toTopOf="parent" />
+
+                  <androidx.constraintlayout.widget.ConstraintLayout
+                      android:id="@+id/yogaModeMoreButton"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_margin="10dp"
+                      android:layout_weight="1"
+                      android:background="@drawable/sports_mode_containers_bg"
+                      android:clickable="true"
+                      android:visibility="gone"
+                      app:layout_constraintBottom_toBottomOf="parent"
+                      app:layout_constraintEnd_toEndOf="parent"
+                      app:layout_constraintTop_toTopOf="parent">
+
+                      <ImageView
+                          android:id="@+id/moreIcon02"
+                          android:layout_width="40dp"
+                          android:layout_height="40dp"
+                          android:layout_margin="10dp"
+                          android:src="@drawable/more_icon01"
+                          android:tint="@color/white"
+                          app:layout_constraintEnd_toEndOf="parent"
+                          app:layout_constraintStart_toStartOf="parent"
+                          app:layout_constraintTop_toTopOf="parent" />
+
+                      <TextView
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_margin="10dp"
+                          android:fontFamily="@font/font_1"
+                          android:text="LIST VIEW"
+                          android:textColor="@color/white"
+                          android:textSize="12sp"
+                          app:layout_constraintBottom_toBottomOf="parent"
+                          app:layout_constraintEnd_toEndOf="parent"
+                          app:layout_constraintStart_toStartOf="parent"
+                          app:layout_constraintTop_toBottomOf="@+id/moreIcon02" />
+
+                  </androidx.constraintlayout.widget.ConstraintLayout>
+
+              </androidx.constraintlayout.widget.ConstraintLayout>
+
+              <androidx.constraintlayout.widget.ConstraintLayout
+                  android:id="@+id/moreButton"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginBottom="10dp"
+                  android:layout_marginLeft="40dp"
+                  android:layout_marginRight="40dp"
+                  android:clickable="true"
+                  android:visibility="visible"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent">
+
+                  <androidx.constraintlayout.widget.ConstraintLayout
+                      android:layout_width="0dp"
+                      android:layout_height="0dp"
+                      android:layout_marginTop="5dp"
+                      android:layout_marginBottom="5dp"
+                      android:alpha="0.7"
+                      android:background="@drawable/yoga_mode_more_containers_bg"
+                      app:layout_constraintBottom_toBottomOf="parent"
+                      app:layout_constraintEnd_toEndOf="parent"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toTopOf="parent" />
+
+                  <ImageView
+                      android:id="@+id/moreIcon03"
+                      android:layout_width="30dp"
+                      android:layout_height="30dp"
+                      android:layout_marginLeft="20dp"
+                      android:layout_marginTop="15dp"
+                      android:layout_marginBottom="15dp"
+                      android:src="@drawable/more_icon03"
+                      android:tint="@color/white"
+                      app:layout_constraintBottom_toBottomOf="parent"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toTopOf="parent" />
+
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:fontFamily="@font/font_3"
+                      android:text="V I E W     M O R E"
+                      android:textColor="@color/white"
+                      android:textSize="15sp"
+                      android:textStyle="bold"
+                      app:layout_constraintBottom_toBottomOf="@+id/moreIcon"
+                      app:layout_constraintEnd_toStartOf="@+id/moreIcon"
+                      app:layout_constraintStart_toEndOf="@+id/moreIcon03"
+                      app:layout_constraintTop_toTopOf="@+id/moreIcon" />
+
+                  <ImageView
+                      android:id="@+id/moreIcon"
+                      android:layout_width="30dp"
+                      android:layout_height="30dp"
+                      android:layout_margin="20dp"
+                      android:src="@drawable/forward_icon02"
+                      android:tint="@color/white"
+                      app:layout_constraintBottom_toBottomOf="parent"
+                      app:layout_constraintEnd_toEndOf="parent"
+                      app:layout_constraintTop_toTopOf="parent" />
+
+
+              </androidx.constraintlayout.widget.ConstraintLayout>
+
+          </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

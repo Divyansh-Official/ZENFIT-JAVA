@@ -11,10 +11,52 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout16"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="25sp"
+            android:layout_height="25sp"
+            android:src="@drawable/admin_icon01"
+            android:tint="@color/white"
+            android:layout_margin="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView37"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView37" />
+
+        <TextView
+            android:id="@+id/textView37"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/font_3"
+            android:text="ADMIN FUNCTIONALITY"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/appCompatAutoCompleteTextView"
+            app:layout_constraintStart_toStartOf="@+id/appCompatAutoCompleteTextView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+            android:id="@+id/appCompatAutoCompleteTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/font_5"
+            android:gravity="center"
+            android:hint="S E A R C H   H E R E"
+            android:textColor="@color/white"
+            android:textColorHint="@color/Dark0"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView37" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -22,6 +64,10 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,36 +81,141 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_margin="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <androidx.appcompat.widget.AppCompatButton
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/sportsModeAddItemManagementButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/admin_functionality_buttons_bg"
+                    android:fontFamily="@font/font_5"
+                    app:icon="@drawable/forward_icon01"
+                    app:iconGravity="end"
                     android:text="SPORTS MODE ADD ITEM MANAGEMENT"
+                    android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <androidx.appcompat.widget.AppCompatButton
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/sportsModeModifyItemManagementButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    app:icon="@drawable/forward_icon01"
+                    app:iconGravity="end"
+                    android:background="@drawable/admin_functionality_buttons_bg"
+                    android:fontFamily="@font/font_5"
                     android:text="SPORTS MODE MODIFY ITEM MANAGEMENT"
+                    android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <androidx.appcompat.widget.AppCompatButton
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/sportsModeRemoveItemManagementButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    app:icon="@drawable/forward_icon01"
+                    app:iconGravity="end"
+                    android:background="@drawable/admin_functionality_buttons_bg"
+                    android:fontFamily="@font/font_5"
                     android:text="SPORTS MODE REMOVE ITEM MANAGEMENT"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/exerciseModeAddItemManagementButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:icon="@drawable/forward_icon01"
+                    app:iconGravity="end"
+                    android:background="@drawable/admin_functionality_buttons_bg"
+                    android:fontFamily="@font/font_5"
+                    android:text="EXERCISE MODE ADD ITEM MANAGEMENT"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/exerciseModeModifyItemManagementButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:icon="@drawable/forward_icon01"
+                    app:iconGravity="end"
+                    android:background="@drawable/admin_functionality_buttons_bg"
+                    android:fontFamily="@font/font_5"
+                    android:text="EXERCISE MODE MODIFY ITEM MANAGEMENT"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/exerciseModeRemoveItemManagementButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/admin_functionality_buttons_bg"
+                    android:fontFamily="@font/font_5"
+                    app:icon="@drawable/forward_icon01"
+                    app:iconGravity="end"
+                    android:text="EXERCISE MODE REMOVE ITEM MANAGEMENT"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/yogaModeAddItemManagementButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:icon="@drawable/forward_icon01"
+                    app:iconGravity="end"
+                    android:background="@drawable/admin_functionality_buttons_bg"
+                    android:fontFamily="@font/font_5"
+                    android:text="YOGA MODE ADD ITEM MANAGEMENT"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/yogaModeModifyItemManagementButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:icon="@drawable/forward_icon01"
+                    app:iconGravity="end"
+                    android:background="@drawable/admin_functionality_buttons_bg"
+                    android:fontFamily="@font/font_5"
+                    android:text="YOGA MODE MODIFY ITEM MANAGEMENT"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/yogaModeRemoveItemManagementButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:icon="@drawable/forward_icon01"
+                    app:iconGravity="end"
+                    android:background="@drawable/admin_functionality_buttons_bg"
+                    android:fontFamily="@font/font_5"
+                    android:text="YOGA MODE REMOVE ITEM MANAGEMENT"
+                    android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

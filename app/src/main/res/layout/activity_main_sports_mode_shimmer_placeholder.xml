@@ -193,7 +193,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:id="@+id/moreIcon"
+                    android:id="@+id/moreIcon01"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="10dp"
@@ -207,14 +207,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:fontFamily="@font/font_1"
-                    android:text="LIST"
+                    android:fontFamily="@font/font_3"
+                    android:text="L I S T"
                     android:textColor="@color/white"
-                    android:textSize="12sp"
+                    android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/moreIcon" />
+                    app:layout_constraintTop_toBottomOf="@+id/moreIcon01" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

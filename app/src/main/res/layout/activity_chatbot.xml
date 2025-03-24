@@ -6,13 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ChatBotActivity"
-    android:background="@drawable/chat_bot_activity_bg_03">
+    android:background="@drawable/chat_bot_activity_bg_04">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout21"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha="0.85"
+        android:alpha="0.6"
         android:background="@color/Dark3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,25 +45,54 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbarContainer" />
 
-    <AutoCompleteTextView
-        android:id="@+id/autoCompleteSearchInput"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/autoCompleteSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/chat_search_bg"
         android:visibility="gone"
-        android:padding="15dp"
+        android:padding="5dp"
         android:gravity="center"
         android:textColor="@color/white"
         android:fontFamily="@font/font_3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarContainer" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbarContainer">
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteSearchInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:fontFamily="@font/font_3"
+            android:gravity="center"
+            android:hint="S E A R C H  H E R E"
+            android:padding="15dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+<!--        <ImageView-->
+<!--            android:id="@+id/imageView2"-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:layout_marginRight="10dp"-->
+<!--            android:tint="@color/white"-->
+<!--            android:src="@drawable/search_icon02"-->
+<!--            app:layout_constraintBottom_toBottomOf="@+id/autoCompleteSearchInput"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/autoCompleteSearchInput" />-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbarContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/Dark3"
+        android:background="@color/Dark6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -81,36 +110,38 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/wallpaperCangeButton"
+            app:layout_constraintEnd_toStartOf="@+id/wallpaperChangeButton"
             app:layout_constraintStart_toEndOf="@+id/lottieAnimationView"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/clearChatButton"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginRight="20dp"
-            android:src="@drawable/clear_icon01"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:tint="@color/white"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/clear_icon03"
             app:layout_constraintBottom_toBottomOf="@+id/chatBotTitleText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/chatBotTitleText" />
 
         <ImageView
             android:id="@+id/searchChatButton"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginRight="20dp"
-            android:src="@drawable/search_icon01"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:tint="@color/white"
+            android:layout_marginRight="30dp"
+            android:src="@drawable/search_icon02"
             app:layout_constraintBottom_toBottomOf="@+id/chatBotTitleText"
             app:layout_constraintEnd_toStartOf="@+id/clearChatButton"
             app:layout_constraintTop_toTopOf="@+id/chatBotTitleText" />
 
         <ImageView
-            android:id="@+id/wallpaperCangeButton"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginRight="20dp"
-            android:tint="@color/IconThemedColor4"
+            android:id="@+id/wallpaperChangeButton"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="30dp"
+            android:tint="@color/white"
             android:src="@drawable/wallpaper_icon01"
             app:layout_constraintBottom_toBottomOf="@+id/chatBotTitleText"
             app:layout_constraintEnd_toStartOf="@+id/searchChatButton"
@@ -140,11 +171,24 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/botReplyLoadingAnimation"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/welcomeText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/chatRecyclerView"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/loading_anim02" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/chatInputAndSenderContainer"
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:background="@color/Dark3"
+        android:background="@color/Dark6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -179,7 +223,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_margin="10dp"
-            android:tint="@color/IconThemedColor4"
+            android:tint="@color/white"
             android:src="@drawable/send_icon04"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

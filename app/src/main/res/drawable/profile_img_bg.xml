@@ -3,6 +3,6 @@
     android:shape="oval">
 
     <stroke android:color="@color/IconThemedColor4"
-        android:width="2dp"/>
+        android:width="1dp"/>
 
 </shape>

@@ -7,6 +7,7 @@ public class ChatBotModal {
 
     String sender;
     String message;
+    String timeStamp;
 
     public String getSender() {
         return sender;
@@ -27,5 +28,6 @@ public class ChatBotModal {
     public ChatBotModal(String sender, String message) {
         this.sender = sender;
         this.message = message;
+        this.timeStamp = timeStamp;
     }
 }

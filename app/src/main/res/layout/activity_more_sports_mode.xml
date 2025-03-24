@@ -14,14 +14,14 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="20dp"
         android:background="@drawable/sports_mode_header_bg"
-        app:layout_constraintEnd_toStartOf="@+id/appLogo"
+        app:layout_constraintEnd_toStartOf="@+id/lottieAnimationView3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:fontFamily="@font/font_3"
             android:text="SPORTS  MODE"
             android:textColor="@color/white"
@@ -33,29 +33,43 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
-        android:id="@+id/appLogo"
-        android:layout_width="37.5dp"
-        android:layout_height="37.5dp"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieAnimationView3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginRight="20dp"
-        android:src="@drawable/logo_icon02"
         android:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/constraintLayout10"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/constraintLayout10" />
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout10"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/sports_anim02" />
 
     <AutoCompleteTextView
         android:id="@+id/searchInputSportsMode"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_margin="10dp"
+        android:backgroundTint="@color/white"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout10" />
 
-    <ListView
-        android:id="@+id/sportsModeList"
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/search_icon02"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/searchInputSportsMode"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/searchInputSportsMode" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/sportsModeRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"

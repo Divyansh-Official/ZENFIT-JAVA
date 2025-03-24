@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/profile"
-        android:icon="@drawable/profile_icon"
-        android:title="PROFILE"/>
+<!--    <item android:id="@+id/profile"-->
+<!--        android:icon="@drawable/profile_icon"-->
+<!--        android:title="PROFILE"/>-->
 
-    <item android:id="@+id/logout"
-        android:icon="@drawable/logout_icon"
-        android:title="LOGOUT"/>
+    <item android:id="@+id/feedback"
+        android:icon="@drawable/feedback_icon"
+        android:title="FEEDBACK"/>
 
     <item android:id="@+id/admin"
         android:icon="@drawable/admin_icon"
         android:title="ADMINISTRATOR"/>
+
+    <item android:id="@+id/logout"
+        android:icon="@drawable/logout_icon"
+        android:title="LOGOUT"/>
 
 </menu>

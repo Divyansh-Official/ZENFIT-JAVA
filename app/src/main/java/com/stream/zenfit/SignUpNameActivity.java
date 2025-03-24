@@ -31,7 +31,7 @@ public class SignUpNameActivity extends AppCompatActivity {
 
         if (firebaseAuth.getCurrentUser() != null)
         {
-            Intent mainActivityIntent = new Intent(SignUpNameActivity.this, MainActivity.class);
+            Intent mainActivityIntent = new Intent(SignUpNameActivity.this, MailVerificationActivity.class);
             startActivity(mainActivityIntent);
             finish();
         }
